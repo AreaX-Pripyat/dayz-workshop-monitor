@@ -74,7 +74,7 @@ function buildDiscordEmbeds(updates) {
       }
     ],
     footer: {
-      text: "Sprawdz GTX panel i wykonaj update/restart serwera, jesli potrzeba."
+      text: "Check the GTX panel and perform a server update/restart if needed."
     }
   }));
 }
@@ -95,7 +95,7 @@ async function sendDiscordNotification(updates) {
       },
       body: JSON.stringify({
         username: "DayZ Workshop Monitor",
-        content: "Wykryto update modow na Steam Workshop.",
+        content: "Mod updates detected on Steam Workshop.",
         embeds: batch
       })
     });
