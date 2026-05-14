@@ -54,8 +54,8 @@ async function fetchWorkshopDetails(mods) {
 
 function buildDiscordEmbeds(updates) {
   return updates.map((update) => ({
-    title: "Steam Workshop: mod zostal zaktualizowany",
-    description: `**${update.name}** ma nowy update na Workshopie.`,
+    title: "Steam Workshop: Mod Update Detected",
+    description: `**${update.name}** has been updated on Steam Workshop.`,
     color: 0x5865f2,
     fields: [
       {
@@ -64,7 +64,7 @@ function buildDiscordEmbeds(updates) {
         inline: true
       },
       {
-        name: "Data update'u",
+        name: "Updated",
         value: formatSteamDate(update.timeUpdated),
         inline: true
       },
@@ -74,7 +74,7 @@ function buildDiscordEmbeds(updates) {
       }
     ],
     footer: {
-      text: "Check the GTX panel and perform a server update/restart if needed."
+      text: "Players should update their local mods before joining the server."
     }
   }));
 }
@@ -95,7 +95,7 @@ async function sendDiscordNotification(updates) {
       },
       body: JSON.stringify({
         username: "DayZ Workshop Monitor",
-        content: "Mod updates detected on Steam Workshop.",
+        content: "Steam Workshop mod update detected.",
         embeds: batch
       })
     });
