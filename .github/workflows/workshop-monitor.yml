@@ -1,0 +1,32 @@
+name: DayZ Workshop Monitor
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-workshop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check Workshop updates
+        run: npm run check
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+      - name: Save latest Workshop state
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update Workshop monitor state"
+          file_pattern: state/workshop-state.json
