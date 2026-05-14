@@ -1,0 +1,12 @@
+{
+  "name": "dayz-workshop-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-workshop-updates.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
